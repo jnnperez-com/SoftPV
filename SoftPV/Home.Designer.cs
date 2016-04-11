@@ -37,11 +37,11 @@
             this.menu5 = new System.Windows.Forms.Button();
             this.menu4 = new System.Windows.Forms.Button();
             this.menu3 = new System.Windows.Forms.Button();
-            this.menu2 = new System.Windows.Forms.Button();
+            this.btnProductos = new System.Windows.Forms.Button();
             this.picmensob = new System.Windows.Forms.PictureBox();
             this.picmasb = new System.Windows.Forms.PictureBox();
             this.picxbut = new System.Windows.Forms.PictureBox();
-            this.menu1 = new System.Windows.Forms.Button();
+            this.btnVenta = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
@@ -150,19 +150,20 @@
             this.menu3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.menu3.UseVisualStyleBackColor = true;
             // 
-            // menu2
+            // btnProductos
             // 
-            this.menu2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.menu2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu2.Image = global::SoftPV.Properties.Resources.f2producto1;
-            this.menu2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.menu2.Location = new System.Drawing.Point(189, 62);
-            this.menu2.Name = "menu2";
-            this.menu2.Size = new System.Drawing.Size(178, 60);
-            this.menu2.TabIndex = 12;
-            this.menu2.Text = "Productos";
-            this.menu2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.menu2.UseVisualStyleBackColor = true;
+            this.btnProductos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnProductos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductos.Image = global::SoftPV.Properties.Resources.f2producto1;
+            this.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductos.Location = new System.Drawing.Point(189, 62);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Size = new System.Drawing.Size(178, 60);
+            this.btnProductos.TabIndex = 12;
+            this.btnProductos.Text = "Productos";
+            this.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductos.UseVisualStyleBackColor = true;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // picmensob
             // 
@@ -209,21 +210,22 @@
             this.picxbut.MouseLeave += new System.EventHandler(this.picxbut_MouseLeave);
             this.picxbut.MouseHover += new System.EventHandler(this.picxbut_MouseHover);
             // 
-            // menu1
+            // btnVenta
             // 
-            this.menu1.BackColor = System.Drawing.Color.Transparent;
-            this.menu1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.menu1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu1.ForeColor = System.Drawing.Color.White;
-            this.menu1.Image = ((System.Drawing.Image)(resources.GetObject("menu1.Image")));
-            this.menu1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.menu1.Location = new System.Drawing.Point(5, 62);
-            this.menu1.Name = "menu1";
-            this.menu1.Size = new System.Drawing.Size(178, 60);
-            this.menu1.TabIndex = 6;
-            this.menu1.Text = "Ventas";
-            this.menu1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.menu1.UseVisualStyleBackColor = false;
+            this.btnVenta.BackColor = System.Drawing.Color.Transparent;
+            this.btnVenta.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnVenta.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenta.ForeColor = System.Drawing.Color.White;
+            this.btnVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnVenta.Image")));
+            this.btnVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVenta.Location = new System.Drawing.Point(5, 62);
+            this.btnVenta.Name = "btnVenta";
+            this.btnVenta.Size = new System.Drawing.Size(178, 60);
+            this.btnVenta.TabIndex = 6;
+            this.btnVenta.Text = "Venta";
+            this.btnVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVenta.UseVisualStyleBackColor = false;
+            this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
             // 
             // pictureBox3
             // 
@@ -256,12 +258,12 @@
             this.Controls.Add(this.menu5);
             this.Controls.Add(this.menu4);
             this.Controls.Add(this.menu3);
-            this.Controls.Add(this.menu2);
+            this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.picmensob);
             this.Controls.Add(this.picmasb);
             this.Controls.Add(this.picxbut);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menu1);
+            this.Controls.Add(this.btnVenta);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -285,7 +287,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button menu1;
+        private System.Windows.Forms.Button btnVenta;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.PictureBox picxbut;
@@ -295,7 +297,7 @@
         private System.Windows.Forms.Button menu5;
         private System.Windows.Forms.Button menu4;
         private System.Windows.Forms.Button menu3;
-        private System.Windows.Forms.Button menu2;
+        private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.PictureBox picayuda;
         private System.Windows.Forms.Panel panelContenedor;
     }

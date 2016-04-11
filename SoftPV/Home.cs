@@ -88,5 +88,31 @@ namespace SoftPV
             picayuda.BackgroundImageLayout = ImageLayout.Stretch;
             picayuda.Size = new Size(26, 26);
         }
+
+        private void btnVenta_Click(object sender, EventArgs e)
+        {
+            //llama como formulario hijo al formulario venta
+            AddFormInPanel(new SoftPV.Venta());
+        }
+
+        //metodo para para crear formularios hijos en el panelContenedor
+        private void AddFormInPanel(object formHijo)
+        {
+            this.panelContenedor.Controls.Clear();
+            //if (this.panelContenedor.Controls.Count > 0)
+            //    this.panelContenedor.Controls.RemoveAt(0);
+            Form fh = formHijo as Form;
+            fh.TopLevel = false;
+            fh.FormBorderStyle = FormBorderStyle.None;
+            fh.Dock = DockStyle.Fill;
+            this.panelContenedor.Controls.Add(fh);
+            this.panelContenedor.Tag = fh;
+            fh.Show();
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            AddFormInPanel(new Producto());
+        }
     }
 }
