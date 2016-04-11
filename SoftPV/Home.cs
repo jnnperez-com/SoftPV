@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SoftPV.BAL;
+using SoftPV.Entities;
 
 namespace SoftPV
 {
@@ -21,7 +23,7 @@ namespace SoftPV
 
         private void Home_Load(object sender, EventArgs e)
         {
-
+            CargarDATOS_me();
         }
 
         //Eventos form cerrar maximizar -+x
@@ -113,6 +115,16 @@ namespace SoftPV
         private void btnProductos_Click(object sender, EventArgs e)
         {
             AddFormInPanel(new Producto());
+        }
+
+        //CargarDATOS
+
+        private void CargarDATOS_me()
+        {
+            UserBAL _UserBal = new UserBAL();
+            _UserBal.Yo();
+            tsUsername.Text = _UserBal.username;
+            tsFullname.Text = _UserBal.get_full_name;
         }
     }
 }

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SoftPV.BAL;
+using SoftPV.Entities;
 
 namespace SoftPV
 {
@@ -104,8 +106,34 @@ namespace SoftPV
 
         private void picLogin_Click(object sender, EventArgs e)
         {
-            Home _Home = new Home();
-            _Home.Show();
+            //checa si esta vacia el textbox
+            if (string.IsNullOrWhiteSpace(txtUsername.Text))
+            {
+                MessageBox.Show("Escriba su Nombre de Usuario");
+                return;
+            }
+            //checa si esta vacia el textbox
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Escriba su Contraseña");
+                return;
+            }
+            UserBAL _UserBal = new UserBAL();
+            _UserBal.username = txtUsername.Text;
+            _UserBal.password = txtPassword.Text;
+            if (_UserBal.IsLoginUs() == true)
+            {
+                if (UserBAL.CheckMeUser() == true)
+                {
+                    Home _Home = new Home();
+                    _Home.Show();
+                }
+                else { MessageBox.Show(msError.ErrorMessage); }
+                
+                
+            }
+            else { MessageBox.Show(msError.ErrorMessage); }
+
 
         }
     }

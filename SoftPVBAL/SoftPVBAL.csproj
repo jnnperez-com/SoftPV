@@ -7,7 +7,7 @@
     <ProjectGuid>{13909FE1-518F-4DCD-A09D-6E96A56C840D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SoftPVBAL</RootNamespace>
+    <RootNamespace>SoftPV.BAL</RootNamespace>
     <AssemblyName>SoftPVBAL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserBAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

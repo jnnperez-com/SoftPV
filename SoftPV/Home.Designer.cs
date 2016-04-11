@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tsUsername = new System.Windows.Forms.ToolStripLabel();
             this.picayuda = new System.Windows.Forms.PictureBox();
             this.menu6 = new System.Windows.Forms.Button();
             this.menu5 = new System.Windows.Forms.Button();
@@ -44,6 +44,7 @@
             this.btnVenta = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.tsFullname = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picmensob)).BeginInit();
@@ -59,25 +60,26 @@
             this.groupBox1.Size = new System.Drawing.Size(318, 54);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos";
+            this.groupBox1.Text = " Tiempo";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1});
+            this.tsUsername,
+            this.tsFullname});
             this.toolStrip1.Location = new System.Drawing.Point(13, 558);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(122, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(173, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripLabel1
+            // tsUsername
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(110, 22);
-            this.toolStripLabel1.Text = "Usuario del Sistema";
+            this.tsUsername.Name = "tsUsername";
+            this.tsUsername.Size = new System.Drawing.Size(110, 22);
+            this.tsUsername.Text = "Usuario del Sistema";
             // 
             // picayuda
             // 
@@ -247,6 +249,12 @@
             this.panelContenedor.Size = new System.Drawing.Size(1098, 413);
             this.panelContenedor.TabIndex = 19;
             // 
+            // tsFullname
+            // 
+            this.tsFullname.Name = "tsFullname";
+            this.tsFullname.Size = new System.Drawing.Size(51, 22);
+            this.tsFullname.Text = "Nombre";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,7 +297,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnVenta;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel tsUsername;
         private System.Windows.Forms.PictureBox picxbut;
         private System.Windows.Forms.PictureBox picmasb;
         private System.Windows.Forms.PictureBox picmensob;
@@ -300,5 +308,6 @@
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.PictureBox picayuda;
         private System.Windows.Forms.Panel panelContenedor;
+        private System.Windows.Forms.ToolStripLabel tsFullname;
     }
 }

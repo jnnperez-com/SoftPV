@@ -7,7 +7,7 @@
     <ProjectGuid>{58D58DA3-8F0C-4387-9EDE-7D500B074B73}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SoftPVEntities</RootNamespace>
+    <RootNamespace>SoftPV.Entities</RootNamespace>
     <AssemblyName>SoftPVEntities</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Credencial.cs" />
+    <Compile Include="msError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RutaBase.cs" />
+    <Compile Include="Token.cs" />
     <Compile Include="UserEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
