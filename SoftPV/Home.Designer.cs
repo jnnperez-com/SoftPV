@@ -32,6 +32,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsUsername = new System.Windows.Forms.ToolStripLabel();
+            this.tsFullname = new System.Windows.Forms.ToolStripLabel();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.picayuda = new System.Windows.Forms.PictureBox();
             this.menu6 = new System.Windows.Forms.Button();
             this.menu5 = new System.Windows.Forms.Button();
@@ -43,8 +45,6 @@
             this.picxbut = new System.Windows.Forms.PictureBox();
             this.btnVenta = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panelContenedor = new System.Windows.Forms.Panel();
-            this.tsFullname = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picmensob)).BeginInit();
@@ -64,14 +64,16 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsUsername,
             this.tsFullname});
-            this.toolStrip1.Location = new System.Drawing.Point(13, 558);
+            this.toolStrip1.Location = new System.Drawing.Point(9, 561);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(173, 25);
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(204, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -80,6 +82,22 @@
             this.tsUsername.Name = "tsUsername";
             this.tsUsername.Size = new System.Drawing.Size(110, 22);
             this.tsUsername.Text = "Usuario del Sistema";
+            // 
+            // tsFullname
+            // 
+            this.tsFullname.Name = "tsFullname";
+            this.tsFullname.Size = new System.Drawing.Size(51, 22);
+            this.tsFullname.Text = "Nombre";
+            // 
+            // panelContenedor
+            // 
+            this.panelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelContenedor.Location = new System.Drawing.Point(5, 128);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(1098, 413);
+            this.panelContenedor.TabIndex = 19;
             // 
             // picayuda
             // 
@@ -109,6 +127,7 @@
             this.menu6.Text = "Herramientas";
             this.menu6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.menu6.UseVisualStyleBackColor = true;
+            this.menu6.Click += new System.EventHandler(this.menu6_Click);
             // 
             // menu5
             // 
@@ -239,22 +258,6 @@
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
             // 
-            // panelContenedor
-            // 
-            this.panelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelContenedor.Location = new System.Drawing.Point(5, 128);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1098, 413);
-            this.panelContenedor.TabIndex = 19;
-            // 
-            // tsFullname
-            // 
-            this.tsFullname.Name = "tsFullname";
-            this.tsFullname.Size = new System.Drawing.Size(51, 22);
-            this.tsFullname.Text = "Nombre";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +282,7 @@
             this.Text = "Home";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Home_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Home_MouseDown);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picayuda)).EndInit();

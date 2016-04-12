@@ -49,7 +49,7 @@ namespace SoftPV.API
                 msError.ErrorMessage = "Usted no tiene permisos.";
                     return false;
                 }
-
+            msError.ErrorMessage = "----Error R21441 ----";
             return false;
         }
         public bool CkeckMeUser()
@@ -75,7 +75,7 @@ namespace SoftPV.API
                 msError.ErrorMessage = "Usted no tiene permisos.";
                     return false;
                 }
-                
+            msError.ErrorMessage = "----Error R21441 ----";
             return false;
         }
         public UserEntity  Me()

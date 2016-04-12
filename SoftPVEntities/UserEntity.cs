@@ -14,8 +14,8 @@ namespace SoftPV.Entities
         public string first_name { get; set; }
         public string last_name { get; set; }
         public string email { get; set; }
-        public List<object> groups { get; set; }
-        public List<object> user_permissions { get; set; }
+        public List<int> groups { get; set; }
+        public List<int> user_permissions { get; set; }
         public bool is_superuser { get; set; }
         public bool is_staff { get; set; }
         public bool is_active { get; set; }

@@ -10,26 +10,34 @@ using System.Windows.Forms;
 using SoftPV.BAL;
 using SoftPV.Entities;
 
+using System.Runtime.InteropServices;
 namespace SoftPV
 {
     public partial class Home : Form
     {
+       
+        
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         public Home()
         {
             InitializeComponent();
         }
-
-        
+            
 
         private void Home_Load(object sender, EventArgs e)
         {
             CargarDATOS_me();
         }
 
+        #region MÉTODOS DE MINIMIZAR, MAXIMIZAR, CERRAR, AYUDA
         //Eventos form cerrar maximizar -+x
         private void picxbut_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
         private void picxbut_MouseHover(object sender, EventArgs e)
         {
@@ -90,13 +98,27 @@ namespace SoftPV
             picayuda.BackgroundImageLayout = ImageLayout.Stretch;
             picayuda.Size = new Size(26, 26);
         }
+        #endregion
 
         private void btnVenta_Click(object sender, EventArgs e)
         {
             //llama como formulario hijo al formulario venta
             AddFormInPanel(new SoftPV.Venta());
+        }       
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            AddFormInPanel(new Producto());
         }
 
+        #region MÉTODOS
+        private void CargarDATOS_me()
+        {
+            UserBAL _UserBal = new UserBAL();
+            _UserBal.Yo();
+            tsUsername.Text = _UserBal.username;
+            tsFullname.Text = _UserBal.get_full_name;
+        }
         //metodo para para crear formularios hijos en el panelContenedor
         private void AddFormInPanel(object formHijo)
         {
@@ -112,19 +134,42 @@ namespace SoftPV
             fh.Show();
         }
 
-        private void btnProductos_Click(object sender, EventArgs e)
+        #endregion
+
+        #region FUNCIONES
+
+        #endregion
+
+        private void Home_MouseDown(object sender, MouseEventArgs e)
         {
-            AddFormInPanel(new Producto());
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        //CargarDATOS
 
-        private void CargarDATOS_me()
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            UserBAL _UserBal = new UserBAL();
-            _UserBal.Yo();
-            tsUsername.Text = _UserBal.username;
-            tsFullname.Text = _UserBal.get_full_name;
+            if (keyData == Keys.F1)
+            {
+                this.btnVenta.PerformClick(); //genera evento click
+                this.btnVenta.Focus();
+                return true;    //indica la pulación del teclado
+            }
+            if (keyData == Keys.F2)
+            {
+                this.btnProductos.PerformClick(); //genera evento click
+                this.btnProductos.Focus();
+                return true;    //indica la pulación del teclado
+            }
+
+            // llama a la clase base
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void menu6_Click(object sender, EventArgs e)
+        {
+            //llama como formulario hijo al formulario venta
+            AddFormInPanel(new SoftPV.Herramientas());
         }
     }
 }
