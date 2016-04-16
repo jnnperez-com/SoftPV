@@ -13,6 +13,49 @@ namespace SoftPV.API
 {
     public class UserAPI
     {
+        public bool AddUser(UserEntity user)
+        {
+
+
+            var client = new RestClient(RutaBase.direccion);
+            client.CookieContainer = new System.Net.CookieContainer();
+            var request = new RestRequest("usuarios/", Method.POST);
+            //request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Authorization", "token " + Credencial.Token);
+            var json = request.JsonSerializer.Serialize(user);
+            request.AddParameter("application/json; charset=utf-8", json, ParameterType.RequestBody);
+
+            var response = client.Execute(request);
+            if (response.StatusCode == HttpStatusCode.Created)
+            {
+
+                return true;
+            }
+
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                msError.ErrorMessage = response.Content.ToString();
+                return false;
+            }
+            if (response.StatusCode == 0)
+            {
+                msError.ErrorMessage = "No es posible conectar con el servidor remoto";
+
+                return false;
+            }
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                msError.ErrorMessage = "No esta autorizado";
+                return false;
+            }
+            if (response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                msError.ErrorMessage = "Usted no tiene permisos.";
+                return false;
+            }
+            msError.ErrorMessage = "----Error R21441 ----";
+            return false;
+        }
         public bool AuthLogin(string username, string password)
         {
             var client = new RestClient(RutaBase.direccion);

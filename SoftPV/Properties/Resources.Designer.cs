@@ -283,6 +283,26 @@ namespace SoftPV.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgtxtpass {
+            get {
+                object obj = ResourceManager.GetObject("imgtxtpass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgtxtusuario {
+            get {
+                object obj = ResourceManager.GetObject("imgtxtusuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loginx {
             get {
                 object obj = ResourceManager.GetObject("loginx", resourceCulture);

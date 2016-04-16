@@ -36,6 +36,8 @@ namespace SoftPV
         private void btnNproducto_Click(object sender, EventArgs e)
         {
             this.panelNProducto.Visible = true;
+
+            this.panelReporte.Visible = false;
         }
 
         private void Producto_Load(object sender, EventArgs e)
@@ -74,11 +76,11 @@ namespace SoftPV
             { _ArticuloBAL.precioPro = valor1; }
 
             double valor2;
-            bool estado2 = double.TryParse(txtPrecioProv.Text, out valor2);
+            bool estado2 = double.TryParse(txtPrecioPub.Text, out valor2);
             if (estado2)
             { _ArticuloBAL.precioPub = valor2; }
             int valor3;
-            bool estado3 = Int32.TryParse(txtPrecioProv.Text, out valor3);
+            bool estado3 = Int32.TryParse(txtExistenciaMin.Text, out valor3);
             if (estado3)
             { _ArticuloBAL.existenciaMIN = valor3; }
             _ArticuloBAL.descripcion = txtDescripcionArt.Text;         
@@ -91,6 +93,15 @@ namespace SoftPV
                 MessageBox.Show("Mensaje");
             }
             else { MessageBox.Show(msError.ErrorMessage); }
+        }
+
+        private void btnRproductos_Click(object sender, EventArgs e)
+        {
+            this.panelReporte.Visible = true;
+            Cursor.Current = Cursors.WaitCursor;
+            dataGridView1.DataSource = ArticuloBAL.GetAllArticulo();
+            Cursor.Current = Cursors.Default;
+            this.panelNProducto.Visible = false;
         }
     }
 }

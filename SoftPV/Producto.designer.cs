@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNproducto = new System.Windows.Forms.Button();
             this.btnEproducto = new System.Windows.Forms.Button();
             this.btnRproductos = new System.Windows.Forms.Button();
@@ -62,9 +64,29 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupMedica = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.panelPro.SuspendLayout();
+            this.panelReporte = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label15 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.condigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioPub = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existenciaMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datecreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateupdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelNProducto.SuspendLayout();
             this.groupMedica.SuspendLayout();
+            this.panelReporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNproducto
@@ -106,6 +128,7 @@
             this.btnRproductos.Text = "Reporte";
             this.btnRproductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRproductos.UseVisualStyleBackColor = true;
+            this.btnRproductos.Click += new System.EventHandler(this.btnRproductos_Click);
             // 
             // btnMproducto
             // 
@@ -122,7 +145,6 @@
             // 
             // panelPro
             // 
-            this.panelPro.Controls.Add(this.panelNProducto);
             this.panelPro.Location = new System.Drawing.Point(155, 14);
             this.panelPro.Name = "panelPro";
             this.panelPro.Size = new System.Drawing.Size(1103, 666);
@@ -153,7 +175,7 @@
             this.panelNProducto.Controls.Add(this.lbexistencia);
             this.panelNProducto.Controls.Add(this.lbprecioprovee);
             this.panelNProducto.Controls.Add(this.lbpreciopublic);
-            this.panelNProducto.Location = new System.Drawing.Point(0, 0);
+            this.panelNProducto.Location = new System.Drawing.Point(155, 14);
             this.panelNProducto.Name = "panelNProducto";
             this.panelNProducto.Size = new System.Drawing.Size(1098, 594);
             this.panelNProducto.TabIndex = 22;
@@ -446,11 +468,207 @@
             this.radioButton1.Text = "L";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // panelReporte
+            // 
+            this.panelReporte.Controls.Add(this.label17);
+            this.panelReporte.Controls.Add(this.label16);
+            this.panelReporte.Controls.Add(this.dataGridView1);
+            this.panelReporte.Controls.Add(this.label15);
+            this.panelReporte.Controls.Add(this.radioButton2);
+            this.panelReporte.Controls.Add(this.radioButton3);
+            this.panelReporte.Controls.Add(this.textBox10);
+            this.panelReporte.Controls.Add(this.label14);
+            this.panelReporte.Location = new System.Drawing.Point(155, 14);
+            this.panelReporte.Name = "panelReporte";
+            this.panelReporte.Size = new System.Drawing.Size(1071, 497);
+            this.panelReporte.TabIndex = 7;
+            this.panelReporte.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(984, 18);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 20);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "00000";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(810, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(168, 20);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Total de Registros: ";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.condigo,
+            this.Nombre,
+            this.Detalle,
+            this.precioPro,
+            this.precioPub,
+            this.existenciaMIN,
+            this.proveedor,
+            this.user_id,
+            this.datecreated,
+            this.dateupdate});
+            this.dataGridView1.Location = new System.Drawing.Point(9, 46);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1059, 401);
+            this.dataGridView1.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(313, 13);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(67, 20);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Buscar";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(671, 16);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(87, 24);
+            this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Código";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(572, 15);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(93, 24);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Nombre";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(386, 12);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(180, 27);
+            this.textBox10.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(5, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(70, 20);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "label14";
+            // 
+            // condigo
+            // 
+            this.condigo.DataPropertyName = "codigo";
+            this.condigo.HeaderText = "Código";
+            this.condigo.Name = "condigo";
+            this.condigo.ReadOnly = true;
+            this.condigo.Width = 150;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 200;
+            // 
+            // Detalle
+            // 
+            this.Detalle.DataPropertyName = "descripcion";
+            this.Detalle.HeaderText = "Detalle";
+            this.Detalle.Name = "Detalle";
+            this.Detalle.ReadOnly = true;
+            this.Detalle.Width = 200;
+            // 
+            // precioPro
+            // 
+            this.precioPro.DataPropertyName = "precioPro";
+            this.precioPro.HeaderText = "Precio Provee.";
+            this.precioPro.Name = "precioPro";
+            this.precioPro.ReadOnly = true;
+            this.precioPro.Width = 400;
+            // 
+            // precioPub
+            // 
+            this.precioPub.DataPropertyName = "precioPub";
+            this.precioPub.HeaderText = "Pre. Público";
+            this.precioPub.Name = "precioPub";
+            this.precioPub.ReadOnly = true;
+            this.precioPub.Width = 300;
+            // 
+            // existenciaMIN
+            // 
+            this.existenciaMIN.DataPropertyName = "existenciaMIN";
+            this.existenciaMIN.HeaderText = "Existencia Min";
+            this.existenciaMIN.Name = "existenciaMIN";
+            this.existenciaMIN.ReadOnly = true;
+            this.existenciaMIN.Width = 300;
+            // 
+            // proveedor
+            // 
+            this.proveedor.DataPropertyName = "proveedor";
+            this.proveedor.HeaderText = "Proveedor";
+            this.proveedor.Name = "proveedor";
+            this.proveedor.ReadOnly = true;
+            // 
+            // user_id
+            // 
+            this.user_id.DataPropertyName = "user_id";
+            this.user_id.HeaderText = "Usuario Alta";
+            this.user_id.Name = "user_id";
+            this.user_id.ReadOnly = true;
+            this.user_id.Width = 200;
+            // 
+            // datecreated
+            // 
+            this.datecreated.DataPropertyName = "datecreated";
+            this.datecreated.HeaderText = "Fecha de Creación";
+            this.datecreated.Name = "datecreated";
+            this.datecreated.ReadOnly = true;
+            this.datecreated.Width = 400;
+            // 
+            // dateupdate
+            // 
+            this.dateupdate.DataPropertyName = "dateupdate";
+            this.dateupdate.HeaderText = "Fecha de Actualización";
+            this.dateupdate.Name = "dateupdate";
+            this.dateupdate.ReadOnly = true;
+            this.dateupdate.Width = 500;
+            // 
             // Producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 714);
+            this.Controls.Add(this.panelReporte);
+            this.Controls.Add(this.panelNProducto);
             this.Controls.Add(this.panelPro);
             this.Controls.Add(this.btnRproductos);
             this.Controls.Add(this.btnEproducto);
@@ -461,11 +679,13 @@
             this.Name = "Producto";
             this.Text = "nProducto";
             this.Load += new System.EventHandler(this.Producto_Load);
-            this.panelPro.ResumeLayout(false);
             this.panelNProducto.ResumeLayout(false);
             this.panelNProducto.PerformLayout();
             this.groupMedica.ResumeLayout(false);
             this.groupMedica.PerformLayout();
+            this.panelReporte.ResumeLayout(false);
+            this.panelReporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -506,5 +726,24 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupMedica;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Panel panelReporte;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn condigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Detalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioPro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioPub;
+        private System.Windows.Forms.DataGridViewTextBoxColumn existenciaMIN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datecreated;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateupdate;
     }
 }

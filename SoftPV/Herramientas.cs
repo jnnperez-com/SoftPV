@@ -60,7 +60,7 @@ namespace SoftPV
 
         private void btnmod8_Click(object sender, EventArgs e)
         {
-          
+            AddFormInPanel(new SoftPV.Empleados());
         }
 
         private void btnmod7_Click(object sender, EventArgs e)

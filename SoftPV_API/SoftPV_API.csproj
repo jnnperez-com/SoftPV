@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloAPI.cs" />
+    <Compile Include="GrupoAPI.cs" />
+    <Compile Include="PermisoAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorAPI.cs" />
     <Compile Include="UserAPI.cs" />

@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="ArticuloEntity.cs" />
     <Compile Include="Credencial.cs" />
+    <Compile Include="GrupoEntity.cs" />
     <Compile Include="msError.cs" />
+    <Compile Include="PermisoEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorEntity.cs" />
     <Compile Include="RutaBase.cs" />

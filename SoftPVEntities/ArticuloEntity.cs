@@ -19,8 +19,7 @@ namespace SoftPV.Entities
         public string descripcion { get; set; }
         public string datecreated { get; set; }
         public int existenciaMIN { get; set; }
-        public string dateupdate { get; set; }
-        public string dateserver { get; set; }
+        public string dateupdate { get; set; }        
         public int proveedor { get; set; }
         public int user_id { get; set; }
     }

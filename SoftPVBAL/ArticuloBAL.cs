@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SoftPV.Entities;
 using SoftPV.API;
+using System.Data;
 
 namespace SoftPV.BAL
 {
@@ -22,8 +23,7 @@ namespace SoftPV.BAL
         public string descripcion { get; set; }
         public string datecreated { get; set; }
         public int existenciaMIN { get; set; }
-        public string dateupdate { get; set; }
-        public string dateserver { get; set; }
+        public string dateupdate { get; set; }        
         public int proveedor { get; set; }
         public int user_id { get; set; }
         #endregion
@@ -46,7 +46,11 @@ namespace SoftPV.BAL
 
             return _ArticuloAPI.AddArticulo(_ArticuloEntity);
         }
-
+        public static DataTable GetAllArticulo()
+        {
+            ArticuloAPI _articulo = new ArticuloAPI();
+            return _articulo.GetAllArticulos();
+        }
         public bool AddArticulo()
         {
             return AddArticulo(this.codigo, this.nombre, this.img, this.presentacion, this.medida, this.precioPro, this.precioPub, this.descripcion, this.existenciaMIN, this.proveedor);

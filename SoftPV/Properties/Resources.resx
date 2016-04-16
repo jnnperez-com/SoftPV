@@ -226,4 +226,10 @@
   <data name="ayudan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ayudan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgtxtpass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgtxtpass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgtxtusuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgtxtusuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

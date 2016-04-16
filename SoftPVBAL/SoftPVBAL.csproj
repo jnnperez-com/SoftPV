@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloBAL.cs" />
+    <Compile Include="GrupoBAL.cs" />
+    <Compile Include="PermisoBAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorBAL.cs" />
     <Compile Include="UserBAL.cs" />
