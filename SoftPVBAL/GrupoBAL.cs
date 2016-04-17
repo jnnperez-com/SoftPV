@@ -45,6 +45,11 @@ namespace SoftPV.BAL
             GrupoAPI _GrupoAPI = new GrupoAPI();
             return _GrupoAPI.GetOneGrupo(Id);
         }
+        public static bool CheckMeGrupo()
+        {
+            GrupoAPI _grupo = new GrupoAPI();
+            return _grupo.CkeckMeGrupo();
+        }
         public bool AddGrupo()
         {
             return AddGrupo(this.name,this.permissions);

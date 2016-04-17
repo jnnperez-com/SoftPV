@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SoftPV.BAL;
+using SoftPV.Entities;
 
 namespace SoftPV
 {
@@ -70,7 +71,9 @@ namespace SoftPV
 
         private void btnmod6_Click(object sender, EventArgs e)
         {
-            AddFormInPanel(new SoftPV.Proveedor());
+            if (!ProveedorBAL.CkeckMeProveedor()) { MessageBox.Show(msError.ErrorMessage); return; }
+            else { AddFormInPanel(new SoftPV.Proveedor()); }
+            
         }
 
         private void btnmod9_Click(object sender, EventArgs e)

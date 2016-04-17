@@ -18,6 +18,7 @@ namespace SoftPV
         public Proveedor()
         {
             InitializeComponent();
+            
         }
 
 
@@ -39,6 +40,7 @@ namespace SoftPV
       
         private void Proveedor_Load(object sender, EventArgs e)
         {
+            
             this.btnNproveedor.Focus();
             this.btnNproveedor.ForeColor = Color.Gray;
             this.paneCproveedor.Visible = true;

@@ -121,5 +121,31 @@ namespace SoftPV.API
             return table;
 
         }
+        public bool CkeckMeProveedor()
+        {
+            var client = new RestClient(RutaBase.direccion);
+
+            var request = new RestRequest("proveedores/", Method.HEAD);
+            request.AddHeader("Authorization", "token " + Credencial.Token);
+
+            var response = client.Execute(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+
+            }
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                msError.ErrorMessage = "No esta autorizado";
+                return false;
+            }
+            if (response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                msError.ErrorMessage = "Usted no tiene permisos.";
+                return false;
+            }
+            msError.ErrorMessage = "----Error R21441 ----";
+            return false;
+        }
     }
 }

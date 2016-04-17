@@ -28,5 +28,10 @@ namespace SoftPV.BAL
             PermisoAPI _PermisoAPI = new PermisoAPI();
             return _PermisoAPI.GetAllPermisosList();
         }
+        public static bool CheckMePermiso()
+        {
+            PermisoAPI _permiso = new PermisoAPI();
+            return _permiso.CkeckMePermisos();
+        }
     }
 }

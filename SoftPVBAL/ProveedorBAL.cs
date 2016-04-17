@@ -55,6 +55,11 @@ namespace SoftPV.BAL
             ProveedorAPI _provedor = new ProveedorAPI();
            return _provedor.GetAllProveedores();
         }
+        public static bool CkeckMeProveedor()
+        {
+            ProveedorAPI _ProveedorAPI = new ProveedorAPI();
+            return _ProveedorAPI.CkeckMeProveedor();
+        }
         public bool AddProveedor()
         {
             return AddProveedor(this.codigo, this.nombreEmpresa, this.direccion, this.tel, this.cel, this.descripcion, this.correo);

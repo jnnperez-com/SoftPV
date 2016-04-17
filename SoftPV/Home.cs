@@ -108,7 +108,10 @@ namespace SoftPV
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            AddFormInPanel(new Producto());
+            if (!ProveedorBAL.CkeckMeProveedor()) { MessageBox.Show(msError.ErrorMessage + " EN Proveedor"); return; }
+            if (!ArticuloBAL.CheckMeArticulo()) { MessageBox.Show(msError.ErrorMessage + " EN Artículos"); return; }
+            else { AddFormInPanel(new Producto()); }
+            
         }
 
         #region MÉTODOS

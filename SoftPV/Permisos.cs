@@ -18,6 +18,7 @@ namespace SoftPV
         public bool is_superuser { get; set; }
         public bool is_staff { get; set; }
         public bool is_active { get; set; }
+        public string AddOrUpdate { get; set; }
         public List<int> groups { get; set; }
         DataTable ListaPermisos;
         bool Isload = false;
@@ -42,7 +43,27 @@ namespace SoftPV
             listBox2.DisplayMember = "name";
             Desactivarpermisos();
             Isload = false;
-            cboxGrupos.SelectedIndex = cboxGrupos.Items.Count - 1;
+            if (AddOrUpdate == "Update") {
+                checkActivo.Checked= this.is_active;
+                checkAdmin.Checked = this.is_staff;
+                checkSuperUser.Checked = this.is_superuser;
+                List<int> grupo = new List<int>();
+                grupo = this.groups;               
+                if (grupo.Count > 0)
+                {
+                    foreach (int number in grupo)
+                    {
+                        GrupoBAL grupobal = new GrupoBAL();
+                        grupobal.id = number;
+                        grupobal.GetOneGrupo();
+                        cboxGrupos.SelectedIndex = cboxGrupos.FindStringExact(grupobal.name);
+                        return;
+                    }
+                }
+               
+            }
+            else { cboxGrupos.SelectedIndex = cboxGrupos.Items.Count - 1; }
+            
 
         }
 

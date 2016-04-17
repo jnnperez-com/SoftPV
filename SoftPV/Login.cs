@@ -106,6 +106,32 @@ namespace SoftPV
 
         private void picLogin_Click(object sender, EventArgs e)
         {
+            methodlogin();
+
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {             
+
+                if (string.IsNullOrWhiteSpace(txtPassword.Text))
+                {                   
+                    MessageBox.Show("Escriba su contraseña");                   
+                    return;
+                }
+                else
+                {
+                  
+                    methodlogin();
+                    return;
+                }
+                
+            }
+        }
+
+        private void methodlogin() {
+
             //checa si esta vacia el textbox
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
@@ -129,12 +155,16 @@ namespace SoftPV
                     _Home.Show();
                 }
                 else { MessageBox.Show(msError.ErrorMessage); }
-                
-                
+
+
             }
             else { MessageBox.Show(msError.ErrorMessage); }
 
+        }
 
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
         }
     }
 

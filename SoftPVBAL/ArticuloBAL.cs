@@ -51,6 +51,11 @@ namespace SoftPV.BAL
             ArticuloAPI _articulo = new ArticuloAPI();
             return _articulo.GetAllArticulos();
         }
+        public static bool CheckMeArticulo()
+        {
+            ArticuloAPI articulo = new ArticuloAPI();
+            return articulo.CkeckMeArticulo();
+        }
         public bool AddArticulo()
         {
             return AddArticulo(this.codigo, this.nombre, this.img, this.presentacion, this.medida, this.precioPro, this.precioPub, this.descripcion, this.existenciaMIN, this.proveedor);
