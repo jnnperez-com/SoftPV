@@ -28,19 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCon = new System.Windows.Forms.Panel();
+            this.btnUpdatePassword = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtpasword2 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.imgpass = new System.Windows.Forms.PictureBox();
             this.txtpasword1 = new System.Windows.Forms.TextBox();
+            this.imguser = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.btnCempl = new System.Windows.Forms.Button();
+            this.btnGempl = new System.Windows.Forms.Button();
             this.txtcorreo = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.txtapellido = new System.Windows.Forms.TextBox();
@@ -72,18 +78,12 @@
             this.btnEempl = new System.Windows.Forms.Button();
             this.btnMempl = new System.Windows.Forms.Button();
             this.btnNempl = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.imgpass = new System.Windows.Forms.PictureBox();
-            this.imguser = new System.Windows.Forms.PictureBox();
-            this.btnCempl = new System.Windows.Forms.Button();
-            this.btnGempl = new System.Windows.Forms.Button();
-            this.btnUpdatePassword = new System.Windows.Forms.Button();
             this.panelCon.SuspendLayout();
-            this.panelListUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgpass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imguser)).BeginInit();
+            this.panelListUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCon
@@ -120,6 +120,20 @@
             this.panelCon.Size = new System.Drawing.Size(1051, 671);
             this.panelCon.TabIndex = 0;
             // 
+            // btnUpdatePassword
+            // 
+            this.btnUpdatePassword.Image = global::SoftPV.Properties.Resources.modificar;
+            this.btnUpdatePassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdatePassword.Location = new System.Drawing.Point(125, 193);
+            this.btnUpdatePassword.Name = "btnUpdatePassword";
+            this.btnUpdatePassword.Size = new System.Drawing.Size(275, 40);
+            this.btnUpdatePassword.TabIndex = 79;
+            this.btnUpdatePassword.Text = "Actualizar Contraseña";
+            this.btnUpdatePassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdatePassword.UseVisualStyleBackColor = true;
+            this.btnUpdatePassword.Visible = false;
+            this.btnUpdatePassword.Click += new System.EventHandler(this.btnUpdatePassword_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -128,6 +142,16 @@
             this.label4.Size = new System.Drawing.Size(82, 20);
             this.label4.TabIndex = 78;
             this.label4.Text = "Cnfirmar";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = global::SoftPV.Properties.Resources.imgtxtpass;
+            this.pictureBox1.Location = new System.Drawing.Point(364, 149);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(36, 36);
+            this.pictureBox1.TabIndex = 76;
+            this.pictureBox1.TabStop = false;
             // 
             // txtpasword2
             // 
@@ -147,6 +171,16 @@
             this.label13.TabIndex = 74;
             this.label13.Text = "Contraseña";
             // 
+            // imgpass
+            // 
+            this.imgpass.BackColor = System.Drawing.Color.White;
+            this.imgpass.Image = global::SoftPV.Properties.Resources.imgtxtpass;
+            this.imgpass.Location = new System.Drawing.Point(364, 107);
+            this.imgpass.Name = "imgpass";
+            this.imgpass.Size = new System.Drawing.Size(36, 36);
+            this.imgpass.TabIndex = 73;
+            this.imgpass.TabStop = false;
+            // 
             // txtpasword1
             // 
             this.txtpasword1.Location = new System.Drawing.Point(125, 107);
@@ -155,6 +189,16 @@
             this.txtpasword1.Name = "txtpasword1";
             this.txtpasword1.Size = new System.Drawing.Size(275, 38);
             this.txtpasword1.TabIndex = 75;
+            // 
+            // imguser
+            // 
+            this.imguser.BackColor = System.Drawing.Color.White;
+            this.imguser.Image = global::SoftPV.Properties.Resources.imgtxtusuario;
+            this.imguser.Location = new System.Drawing.Point(364, 63);
+            this.imguser.Name = "imguser";
+            this.imguser.Size = new System.Drawing.Size(36, 36);
+            this.imguser.TabIndex = 71;
+            this.imguser.TabStop = false;
             // 
             // label11
             // 
@@ -211,6 +255,32 @@
             this.maskedTextBox2.Size = new System.Drawing.Size(233, 27);
             this.maskedTextBox2.TabIndex = 61;
             this.maskedTextBox2.Visible = false;
+            // 
+            // btnCempl
+            // 
+            this.btnCempl.Image = global::SoftPV.Properties.Resources.cancelar2;
+            this.btnCempl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCempl.Location = new System.Drawing.Point(820, 168);
+            this.btnCempl.Name = "btnCempl";
+            this.btnCempl.Size = new System.Drawing.Size(143, 40);
+            this.btnCempl.TabIndex = 68;
+            this.btnCempl.Text = "Cancelar";
+            this.btnCempl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCempl.UseVisualStyleBackColor = true;
+            this.btnCempl.Click += new System.EventHandler(this.btnCempl_Click);
+            // 
+            // btnGempl
+            // 
+            this.btnGempl.Image = global::SoftPV.Properties.Resources.guardar;
+            this.btnGempl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGempl.Location = new System.Drawing.Point(820, 100);
+            this.btnGempl.Name = "btnGempl";
+            this.btnGempl.Size = new System.Drawing.Size(143, 40);
+            this.btnGempl.TabIndex = 67;
+            this.btnGempl.Text = "Guardar";
+            this.btnGempl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGempl.UseVisualStyleBackColor = true;
+            this.btnGempl.Click += new System.EventHandler(this.btnGempl_Click);
             // 
             // txtcorreo
             // 
@@ -378,16 +448,16 @@
             this.dataGridViewUsers.Location = new System.Drawing.Point(9, 46);
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewUsers.RowTemplate.Height = 24;
             this.dataGridViewUsers.Size = new System.Drawing.Size(1045, 401);
             this.dataGridViewUsers.TabIndex = 5;
@@ -515,6 +585,7 @@
             this.btnEempl.Text = "Eliminar";
             this.btnEempl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEempl.UseVisualStyleBackColor = true;
+            this.btnEempl.Click += new System.EventHandler(this.btnEempl_Click);
             // 
             // btnMempl
             // 
@@ -542,76 +613,6 @@
             this.btnNempl.UseVisualStyleBackColor = true;
             this.btnNempl.Click += new System.EventHandler(this.btnNempl_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::SoftPV.Properties.Resources.imgtxtpass;
-            this.pictureBox1.Location = new System.Drawing.Point(364, 149);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 36);
-            this.pictureBox1.TabIndex = 76;
-            this.pictureBox1.TabStop = false;
-            // 
-            // imgpass
-            // 
-            this.imgpass.BackColor = System.Drawing.Color.White;
-            this.imgpass.Image = global::SoftPV.Properties.Resources.imgtxtpass;
-            this.imgpass.Location = new System.Drawing.Point(364, 107);
-            this.imgpass.Name = "imgpass";
-            this.imgpass.Size = new System.Drawing.Size(36, 36);
-            this.imgpass.TabIndex = 73;
-            this.imgpass.TabStop = false;
-            // 
-            // imguser
-            // 
-            this.imguser.BackColor = System.Drawing.Color.White;
-            this.imguser.Image = global::SoftPV.Properties.Resources.imgtxtusuario;
-            this.imguser.Location = new System.Drawing.Point(364, 63);
-            this.imguser.Name = "imguser";
-            this.imguser.Size = new System.Drawing.Size(36, 36);
-            this.imguser.TabIndex = 71;
-            this.imguser.TabStop = false;
-            // 
-            // btnCempl
-            // 
-            this.btnCempl.Image = global::SoftPV.Properties.Resources.cancelar2;
-            this.btnCempl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCempl.Location = new System.Drawing.Point(820, 168);
-            this.btnCempl.Name = "btnCempl";
-            this.btnCempl.Size = new System.Drawing.Size(143, 40);
-            this.btnCempl.TabIndex = 68;
-            this.btnCempl.Text = "Cancelar";
-            this.btnCempl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCempl.UseVisualStyleBackColor = true;
-            this.btnCempl.Click += new System.EventHandler(this.btnCempl_Click);
-            // 
-            // btnGempl
-            // 
-            this.btnGempl.Image = global::SoftPV.Properties.Resources.guardar;
-            this.btnGempl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGempl.Location = new System.Drawing.Point(820, 100);
-            this.btnGempl.Name = "btnGempl";
-            this.btnGempl.Size = new System.Drawing.Size(143, 40);
-            this.btnGempl.TabIndex = 67;
-            this.btnGempl.Text = "Guardar";
-            this.btnGempl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGempl.UseVisualStyleBackColor = true;
-            this.btnGempl.Click += new System.EventHandler(this.btnGempl_Click);
-            // 
-            // btnUpdatePassword
-            // 
-            this.btnUpdatePassword.Image = global::SoftPV.Properties.Resources.modificar;
-            this.btnUpdatePassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdatePassword.Location = new System.Drawing.Point(125, 193);
-            this.btnUpdatePassword.Name = "btnUpdatePassword";
-            this.btnUpdatePassword.Size = new System.Drawing.Size(275, 40);
-            this.btnUpdatePassword.TabIndex = 79;
-            this.btnUpdatePassword.Text = "Actualizar Contraseña";
-            this.btnUpdatePassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUpdatePassword.UseVisualStyleBackColor = true;
-            this.btnUpdatePassword.Visible = false;
-            this.btnUpdatePassword.Click += new System.EventHandler(this.btnUpdatePassword_Click);
-            // 
             // Empleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
@@ -630,12 +631,12 @@
             this.Load += new System.EventHandler(this.Empleados_Load);
             this.panelCon.ResumeLayout(false);
             this.panelCon.PerformLayout();
-            this.panelListUser.ResumeLayout(false);
-            this.panelListUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgpass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imguser)).EndInit();
+            this.panelListUser.ResumeLayout(false);
+            this.panelListUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -142,6 +142,81 @@ namespace SoftPV.API
             msError.ErrorMessage = "----Error R21441 ----";
             return false;
         }
+        public ArticuloEntity GetCodeArticulo(string Codigo)
+        {            
+            ArticuloEntity art = new ArticuloEntity();
+            if (string.IsNullOrEmpty(Codigo))
+            {
+                art.id = 0;
+                return art;
+            }
+            var client = new RestClient(RutaBase.direccion);
+            client.CookieContainer = new System.Net.CookieContainer();
+            var request = new RestRequest("articulos/list_lite/?codigo=" + Codigo, Method.GET);
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Authorization", "token " + Credencial.Token);
+
+            var response = client.Execute(request);
+            List<ArticuloEntity> listArt = new List<ArticuloEntity>();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                listArt = deserial.Deserialize<List<ArticuloEntity>>(response);
+                bool isEmpty = !listArt.Any();
+                if (isEmpty)
+                {
+                    // error message
+                    art.id = 0;
+                    return art;
+                }
+                else
+                {
+                    // show grid
+                    foreach (ArticuloEntity rowlist in listArt)
+                    {
+                        if (rowlist.codigo == Codigo) // Will match once.
+                        {
+                            art.id = rowlist.id;
+                            art.codigo = rowlist.codigo;
+                            art.nombre = rowlist.nombre;
+                            art.precioPro = rowlist.precioPro;
+                            art.precioPub = rowlist.precioPub;
+                        }
+                    }
+                    return art;
+                }
+               
+            }
+
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                msError.ErrorMessage = response.Content.ToString();
+                art.id = 0;
+                return art;
+            }
+            if (response.StatusCode == 0)
+            {
+                msError.ErrorMessage = "No es posible conectar con el servidor remoto";
+                art.id = 0;
+                return art;
+            }
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                msError.ErrorMessage = "No esta autorizado";
+                art.id = 0;
+                return art;
+            }
+            if (response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                msError.ErrorMessage = "Usted no tiene permisos.";
+                art.id = 0;
+                return art;
+            }
+            msError.ErrorMessage = "----Error R21441 ----";
+            art.id = 0;
+            return art;
+
+        }
         public DataTable ConvertToDataTable<T>(IList<T> data)
         {
             PropertyDescriptorCollection properties =

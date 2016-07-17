@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SoftPV.BAL;
+using SoftPV.Entities;
 
 namespace SoftPV
 {
     public partial class Venta : Form
     {
+        #region COLORES y estilos
         //corores generales botones y color de letra
         int col1 = 094;
         int col2 = 153;
@@ -21,36 +24,8 @@ namespace SoftPV
         int col21 = 234;
         int col22 = 255;
         int col23 = 209;
-        //variable nota num
-        int numNota =0;
 
-        
-        public Venta()
-        {
-            InitializeComponent();
-             
-            
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnborrar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtnotanum_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Venta_Load(object sender, EventArgs e)
-        {
-            nota_id();
+        private void CargarLoadEstilos() {
             
             //color de fonfo 
             this.BackColor = System.Drawing.Color.FromArgb(col21, col22, col23);
@@ -61,36 +36,47 @@ namespace SoftPV
             this.txtcantidad.ForeColor = Color.FromArgb(col1, col2, col3);
             this.txtimporte.ForeColor = Color.FromArgb(col1, col2, col3);
             //estilo de la tabla 
-            this.TablaVenta.BackgroundColor = Color.FromArgb(col21, col22, col23);
-            TablaVenta.EnableHeadersVisualStyles = false;
-            TablaVenta.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(col1, col2, col3);
-            TablaVenta.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(col21, col22, col23);
-            this.TablaVenta.BorderStyle = BorderStyle.Fixed3D;
-            TablaVenta.AutoGenerateColumns = false;
-            TablaVenta.RowHeadersVisible = false;
+            this.dgVenta.BackgroundColor = Color.FromArgb(col21, col22, col23);
+            dgVenta.EnableHeadersVisualStyles = false;
+            dgVenta.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(col1, col2, col3);
+            dgVenta.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(col21, col22, col23);
+            this.dgVenta.BorderStyle = BorderStyle.Fixed3D;
+            dgVenta.AutoGenerateColumns = false;
+            dgVenta.RowHeadersVisible = false;
             //texto campo cantida default con valor de 1 txtcantidad
-             
-            txtcantidad.Text="1";
+
+            txtcantidad.Text = "1";
 
             txtnotanum.Text = numNota.ToString();
+        }
+        #endregion
+        //variable nota num
+        int numNota =0;
+        DataTable dtListArt = new DataTable();  
+              
+        public Venta()
+        {
+            InitializeComponent();
+             
+            
+
+        }
+              
+        private void Venta_Load(object sender, EventArgs e)
+        {
+            CargarLoadEstilos();
+
+            //Crear Columnas de la tabla
+            dtListArt.Columns.Add("id", typeof(int));
+            dtListArt.Columns.Add("codigo", typeof(string));
+            dtListArt.Columns.Add("nombre", typeof(string));
+            dtListArt.Columns.Add("precio", typeof(double));
+            dtListArt.Columns.Add("cantidad", typeof(double));
+            dtListArt.Columns.Add("importe", typeof(double));
            
-        }
-
-        private void btncobrar_Click(object sender, EventArgs e)
-        {
 
         }
-
-        private void btncancelar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TablaVenta_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        
         private void txtcantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 8)
@@ -127,49 +113,82 @@ namespace SoftPV
 
         private void btnAgregarpro_Click(object sender, EventArgs e)
         {
-            if (campo_lleno() == true)
-            {
-                
-                 
-            }
-        }
-
-        private bool campo_lleno()//comprobacion del  codigo del producto y cantidad
-
-        {
-            bool lleno = false;
-            if (!string.IsNullOrWhiteSpace(txtcodigo.Text)) //comprueba que no este vacio txtcodigo
-            {
-                if (!string.IsNullOrWhiteSpace(txtcantidad.Text))
-                {
-                    lleno = true;
-                }
-                else { MessageBox.Show("Inserte cantidad "); }
-            }
-            else { MessageBox.Show("Inserte el codigo del producto a vender"); }
-
-            return lleno;
-        }
-
-        private void llenartablaventa()//nena la tabal venta
-        {
-            
-           
-        }
-
-        private void nota_id()
-        {
-        }
-
-        private void txtcodigo_TextChanged(object sender, EventArgs e)
-        {
+            AddRowdtArticulo();
           
         }
-
         
+        private void AddRowdtArticulo()//nena la tabal venta
+        {
+            if (string.IsNullOrWhiteSpace(txtcodigo.Text))
+            {
+                MessageBox.Show("Escriba el Código del Producto");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtcantidad.Text))
+            {
+                MessageBox.Show("Escriba la Cantidad que desea Vender");
+                return;
+            }
 
-        
+            ArticuloBAL articulo = new ArticuloBAL();
+            articulo.codigo = txtcodigo.Text;
+            articulo.GetCodeArticulo();
+            if (articulo.id > 0)
+            {
+                DataRow dr = dtListArt.NewRow();
+                dr["id"] = articulo.id;
+                dr["codigo"] = articulo.codigo;
+                dr["nombre"] = articulo.nombre;
+                dr["precio"] = Precio(articulo.precioPro, articulo.precioPub);
+                dr["cantidad"] = txtcantidad.Text;
+                dr["importe"] = Importe(articulo.precioPro, articulo.precioPub, Double.Parse(txtcantidad.Text.ToString()));
 
+                dtListArt.Rows.Add(dr);
+                dgVenta.DataSource = dtListArt;
+               txtimporte.Text = dtListArt.AsEnumerable().Sum(x => x.Field<double>("importe")).ToString();
+            }
+            else { MessageBox.Show("No se encontro ningún producto"); }
+            
+        }
 
+        private double Importe(double PrecioPro, double PrecioPub, double Cantidad)
+        {
+            RadioButton checkedButton = this.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+            double c;
+            if (checkedButton.Name == "rbtnclieeventual")
+            {
+                 
+                c = Math.Round(PrecioPub * Cantidad, 2);
+                return c;
+            }
+            else {
+                c = Math.Round(PrecioPro * Cantidad, 2);
+                return c ; }
+           
+        }
+        private double Precio(double PrecioPro, double PrecioPub)
+        {
+            RadioButton checkedButton = this.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+            if (checkedButton.Name == "rbtnclieeventual")
+            {
+                return PrecioPub ;
+            }
+            else { return PrecioPro; }
+
+        }
+        private void txtcodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Space)
+            {
+                e.Handled = true;
+
+            }
+            else
+            {
+                e.Handled = false;
+            }
+        }
     }
 }

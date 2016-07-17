@@ -33,7 +33,13 @@
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.lbcantidad = new System.Windows.Forms.Label();
             this.txtcantidad = new System.Windows.Forms.TextBox();
-            this.TablaVenta = new System.Windows.Forms.DataGridView();
+            this.dgVenta = new System.Windows.Forms.DataGridView();
+            this.TvenCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TvenDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TvenPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TvenCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TvenImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.blnota = new System.Windows.Forms.Label();
             this.txtnotanum = new System.Windows.Forms.TextBox();
             this.lbcliente = new System.Windows.Forms.Label();
@@ -47,12 +53,7 @@
             this.btnAgregarpro = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btncobrar = new System.Windows.Forms.Button();
-            this.TvenCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TvenDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TvenPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TvenCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TvenImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaVenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // lbproducto
@@ -67,20 +68,19 @@
             // 
             // txtcodigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(172, 14);
+            this.txtcodigo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodigo.Location = new System.Drawing.Point(172, 20);
             this.txtcodigo.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtcodigo.Multiline = true;
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(233, 38);
+            this.txtcodigo.Size = new System.Drawing.Size(233, 26);
             this.txtcodigo.TabIndex = 1;
             this.txtcodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
-
+            this.txtcodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcodigo_KeyPress);
             // 
             // lbcantidad
             // 
             this.lbcantidad.AutoSize = true;
-            this.lbcantidad.Location = new System.Drawing.Point(70, 88);
+            this.lbcantidad.Location = new System.Drawing.Point(70, 59);
             this.lbcantidad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbcantidad.Name = "lbcantidad";
             this.lbcantidad.Size = new System.Drawing.Size(90, 20);
@@ -89,33 +89,87 @@
             // 
             // txtcantidad
             // 
-            this.txtcantidad.Location = new System.Drawing.Point(172, 72);
+            this.txtcantidad.Location = new System.Drawing.Point(172, 56);
             this.txtcantidad.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.txtcantidad.Multiline = true;
             this.txtcantidad.Name = "txtcantidad";
-            this.txtcantidad.Size = new System.Drawing.Size(233, 38);
+            this.txtcantidad.Size = new System.Drawing.Size(233, 27);
             this.txtcantidad.TabIndex = 3;
             this.txtcantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtcantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcantidad_KeyPress);
             // 
-            // TablaVenta
+            // dgVenta
             // 
-            this.TablaVenta.AllowUserToAddRows = false;
-            this.TablaVenta.AllowUserToDeleteRows = false;
-            this.TablaVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgVenta.AllowUserToAddRows = false;
+            this.dgVenta.AllowUserToDeleteRows = false;
+            this.dgVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TvenCodigo,
             this.TvenDescripcion,
             this.TvenPrecio,
             this.TvenCantidad,
-            this.TvenImporte});
-            this.TablaVenta.Location = new System.Drawing.Point(5, 113);
-            this.TablaVenta.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.TablaVenta.Name = "TablaVenta";
-            this.TablaVenta.ReadOnly = true;
-            this.TablaVenta.Size = new System.Drawing.Size(995, 348);
-            this.TablaVenta.TabIndex = 7;
-            this.TablaVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaVenta_CellContentClick);
+            this.TvenImporte,
+            this.id});
+            this.dgVenta.Location = new System.Drawing.Point(5, 113);
+            this.dgVenta.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.dgVenta.Name = "dgVenta";
+            this.dgVenta.ReadOnly = true;
+            this.dgVenta.Size = new System.Drawing.Size(995, 348);
+            this.dgVenta.TabIndex = 7;
+            // 
+            // TvenCodigo
+            // 
+            this.TvenCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TvenCodigo.DataPropertyName = "codigo";
+            this.TvenCodigo.HeaderText = "Códido";
+            this.TvenCodigo.MaxInputLength = 10;
+            this.TvenCodigo.Name = "TvenCodigo";
+            this.TvenCodigo.ReadOnly = true;
+            this.TvenCodigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TvenCodigo.Width = 200;
+            // 
+            // TvenDescripcion
+            // 
+            this.TvenDescripcion.DataPropertyName = "nombre";
+            this.TvenDescripcion.HeaderText = "Cocepto";
+            this.TvenDescripcion.Name = "TvenDescripcion";
+            this.TvenDescripcion.ReadOnly = true;
+            this.TvenDescripcion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TvenDescripcion.Width = 301;
+            // 
+            // TvenPrecio
+            // 
+            this.TvenPrecio.DataPropertyName = "precio";
+            this.TvenPrecio.HeaderText = "Precio";
+            this.TvenPrecio.Name = "TvenPrecio";
+            this.TvenPrecio.ReadOnly = true;
+            this.TvenPrecio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TvenPrecio.Width = 200;
+            // 
+            // TvenCantidad
+            // 
+            this.TvenCantidad.DataPropertyName = "cantidad";
+            this.TvenCantidad.HeaderText = "Cantidad";
+            this.TvenCantidad.Name = "TvenCantidad";
+            this.TvenCantidad.ReadOnly = true;
+            this.TvenCantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TvenCantidad.Width = 140;
+            // 
+            // TvenImporte
+            // 
+            this.TvenImporte.DataPropertyName = "importe";
+            this.TvenImporte.HeaderText = "Importe";
+            this.TvenImporte.Name = "TvenImporte";
+            this.TvenImporte.ReadOnly = true;
+            this.TvenImporte.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TvenImporte.Width = 150;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // blnota
             // 
@@ -126,7 +180,6 @@
             this.blnota.Size = new System.Drawing.Size(72, 20);
             this.blnota.TabIndex = 8;
             this.blnota.Text = "Nota N°";
-            this.blnota.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtnotanum
             // 
@@ -138,7 +191,6 @@
             this.txtnotanum.Size = new System.Drawing.Size(233, 38);
             this.txtnotanum.TabIndex = 9;
             this.txtnotanum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnotanum.TextChanged += new System.EventHandler(this.txtnotanum_TextChanged);
             // 
             // lbcliente
             // 
@@ -156,22 +208,22 @@
             this.rbtnCliefijo.Location = new System.Drawing.Point(1022, 173);
             this.rbtnCliefijo.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.rbtnCliefijo.Name = "rbtnCliefijo";
-            this.rbtnCliefijo.Size = new System.Drawing.Size(120, 24);
+            this.rbtnCliefijo.Size = new System.Drawing.Size(169, 24);
             this.rbtnCliefijo.TabIndex = 12;
-            this.rbtnCliefijo.TabStop = true;
-            this.rbtnCliefijo.Text = "Cliente Fijo";
+            this.rbtnCliefijo.Text = "Precio Proveedor";
             this.rbtnCliefijo.UseVisualStyleBackColor = true;
             // 
             // rbtnclieeventual
             // 
             this.rbtnclieeventual.AutoSize = true;
+            this.rbtnclieeventual.Checked = true;
             this.rbtnclieeventual.Location = new System.Drawing.Point(1022, 207);
             this.rbtnclieeventual.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.rbtnclieeventual.Name = "rbtnclieeventual";
-            this.rbtnclieeventual.Size = new System.Drawing.Size(161, 24);
+            this.rbtnclieeventual.Size = new System.Drawing.Size(146, 24);
             this.rbtnclieeventual.TabIndex = 13;
             this.rbtnclieeventual.TabStop = true;
-            this.rbtnclieeventual.Text = "Cliente Eventual";
+            this.rbtnclieeventual.Text = "Precio Público";
             this.rbtnclieeventual.UseVisualStyleBackColor = true;
             // 
             // txtimporte
@@ -202,7 +254,7 @@
             this.tntcliente.Name = "tntcliente";
             this.tntcliente.Size = new System.Drawing.Size(233, 68);
             this.tntcliente.TabIndex = 11;
-            this.tntcliente.Text = "Cliente Eventual";
+            this.tntcliente.Text = "Cambiar Cliente";
             this.tntcliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tntcliente.UseVisualStyleBackColor = true;
             // 
@@ -218,7 +270,6 @@
             this.btnborrar.Text = "Borrar";
             this.btnborrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnborrar.UseVisualStyleBackColor = true;
-            this.btnborrar.Click += new System.EventHandler(this.btnborrar_Click);
             // 
             // btnbuscar
             // 
@@ -259,7 +310,6 @@
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // btncobrar
             // 
@@ -273,54 +323,6 @@
             this.btncobrar.Text = "Cobrar";
             this.btncobrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncobrar.UseVisualStyleBackColor = true;
-            this.btncobrar.Click += new System.EventHandler(this.btncobrar_Click);
-            // 
-            // TvenCodigo
-            // 
-            this.TvenCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TvenCodigo.DataPropertyName = "Ven_prod_codigo";
-            this.TvenCodigo.HeaderText = "Códido";
-            this.TvenCodigo.MaxInputLength = 10;
-            this.TvenCodigo.Name = "TvenCodigo";
-            this.TvenCodigo.ReadOnly = true;
-            this.TvenCodigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TvenCodigo.Width = 200;
-            // 
-            // TvenDescripcion
-            // 
-            this.TvenDescripcion.DataPropertyName = "Ven_prod_descrip";
-            this.TvenDescripcion.HeaderText = "Descripción del Producto";
-            this.TvenDescripcion.Name = "TvenDescripcion";
-            this.TvenDescripcion.ReadOnly = true;
-            this.TvenDescripcion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TvenDescripcion.Width = 301;
-            // 
-            // TvenPrecio
-            // 
-            this.TvenPrecio.DataPropertyName = "Ven_pro_precvent";
-            this.TvenPrecio.HeaderText = "Precio";
-            this.TvenPrecio.Name = "TvenPrecio";
-            this.TvenPrecio.ReadOnly = true;
-            this.TvenPrecio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TvenPrecio.Width = 200;
-            // 
-            // TvenCantidad
-            // 
-            this.TvenCantidad.DataPropertyName = "Ven_cantidad";
-            this.TvenCantidad.HeaderText = "Cantidad";
-            this.TvenCantidad.Name = "TvenCantidad";
-            this.TvenCantidad.ReadOnly = true;
-            this.TvenCantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TvenCantidad.Width = 140;
-            // 
-            // TvenImporte
-            // 
-            this.TvenImporte.DataPropertyName = "Importe";
-            this.TvenImporte.HeaderText = "Importe";
-            this.TvenImporte.Name = "TvenImporte";
-            this.TvenImporte.ReadOnly = true;
-            this.TvenImporte.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TvenImporte.Width = 150;
             // 
             // Venta
             // 
@@ -337,7 +339,7 @@
             this.Controls.Add(this.lbcliente);
             this.Controls.Add(this.txtnotanum);
             this.Controls.Add(this.blnota);
-            this.Controls.Add(this.TablaVenta);
+            this.Controls.Add(this.dgVenta);
             this.Controls.Add(this.btnborrar);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.btnAgregarpro);
@@ -350,7 +352,7 @@
             this.Name = "Venta";
             this.Text = "Venta";
             this.Load += new System.EventHandler(this.Venta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.TablaVenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,7 +367,7 @@
         private System.Windows.Forms.Button btnAgregarpro;
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Button btnborrar;
-        private System.Windows.Forms.DataGridView TablaVenta;
+        private System.Windows.Forms.DataGridView dgVenta;
         private System.Windows.Forms.Label blnota;
         private System.Windows.Forms.TextBox txtnotanum;
         private System.Windows.Forms.Label lbcliente;
@@ -381,5 +383,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TvenPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn TvenCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn TvenImporte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }

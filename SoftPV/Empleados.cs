@@ -37,7 +37,8 @@ namespace SoftPV
             this.panelCon.Tag = fh;
             fh.Show();
         }
-         
+        
+        //Botón Privilegios
         private void button1_Click(object sender, EventArgs e)
         {
             if (!PermisoBAL.CheckMePermiso()) { MessageBox.Show(msError.ErrorMessage + " EN Permiso"); return; }
@@ -64,7 +65,7 @@ namespace SoftPV
             this.is_superuser = per.is_superuser;
             per.Close();
         }
-
+        //Botón Guardar
         private void btnGempl_Click(object sender, EventArgs e)
         {
             if (AddOrUpdate == "Add")
@@ -107,16 +108,22 @@ namespace SoftPV
                 user.is_active = this.is_active;
                 user.is_staff = this.is_staff;
                 user.is_superuser = this.is_superuser;
-
-                if (user.UpdateUser() == true)
+                //Pregunta
+                DialogResult dialogResult = MessageBox.Show("Desea Editar " + user.username, "Editar Usuario", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    Limpiartextbox();
-                   
-                    MessageBox.Show("Cambios Guardado con Exito!!");
-                    this.panelCon.Visible = false;
+                    if (user.UpdateUser() == true)
+                    {
+                        Limpiartextbox();
+
+                        MessageBox.Show("Cambios Guardado con Exito!!");
+                        this.panelCon.Visible = false;
+                    }
+                    else { MessageBox.Show(msError.ErrorMessage); }
+                    return;
                 }
-                else { MessageBox.Show(msError.ErrorMessage); }
-                return;
+                else { Limpiartextbox(); this.panelCon.Visible = false; }
+                
             }
 
         }
@@ -127,8 +134,13 @@ namespace SoftPV
         {
             Limpiartextbox();
         }
+        //Método Limpiar textbox's
         private void Limpiartextbox()
         {
+             is_superuser = false;
+             is_staff = false;
+             is_active = false;
+             groups = new List<int>();
             foreach (Control C in this.panelCon.Controls)
             {
                 if (C is TextBox)
@@ -151,17 +163,19 @@ namespace SoftPV
         {
             
             this.dataGridViewUsers.DataSource = null;
-
+            this.txtpasword1.Enabled = true;
+            this.txtpasword2.Enabled = true;
             this.panelListUser.Visible = false;
             this.panelCon.Visible = true;
             Limpiartextbox();
             this.btnUpdatePassword.Visible = false;
+            this.id = 0;
             AddOrUpdate = "Add";
         }
 
         private void Empleados_Load(object sender, EventArgs e)
         {
-            
+            this.panelCon.Visible = false;
         }
 
         private void dataGridViewUsers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -247,15 +261,16 @@ namespace SoftPV
 
         }
 
+        //Botón Editar
         private void btnMempl_Click(object sender, EventArgs e)
         {
-            this.panelListUser.Visible = false;
-            this.panelCon.Visible = true;
+           
+           
             AddOrUpdate = "Update";
             if (dataGridViewUsers.Rows.Count > 0)
             {
-
-
+                this.panelListUser.Visible = false;
+                this.panelCon.Visible = true;
                 int nFila = dataGridViewUsers.CurrentRow.Index;
                 if (nFila == -1) { MessageBox.Show("Seleciona una Fila de datos"); }
                 else
@@ -274,6 +289,43 @@ namespace SoftPV
             frmupdate.id = this.id;
             frmupdate.ShowDialog();
             frmupdate.Close();
+        }
+
+        //Botón Eliminar
+        private void btnEempl_Click(object sender, EventArgs e)
+        {
+
+
+
+            if (dataGridViewUsers.Rows.Count > 0)
+            {
+
+
+                int nFila = dataGridViewUsers.CurrentRow.Index;
+                if (nFila == -1) { MessageBox.Show("Seleciona una Fila de datos"); }
+                else
+                {
+                    DataGridViewCell cellSelectedId = dataGridViewUsers.Rows[nFila].Cells["id"]; //seleciona el nombre de la fila
+                    DataGridViewCell cellSelectedName = dataGridViewUsers.Rows[nFila].Cells["Usuario"];
+                    //Pregunta
+                    DialogResult dialogResult = MessageBox.Show("Desea Eliminar " + cellSelectedName.Value.ToString(), "Eliminar Usuario", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //FUNCION ELIMINAR
+                        if (UserBAL.DeleteOneUser(Int32.Parse(cellSelectedId.Value.ToString())) == true)
+                        {
+                            //Carga de nuevo el datarid
+
+                            this.dataGridViewUsers.DataSource = UserBAL.GetAllUsers();
+                            lblNumeroList.Text = dataGridViewUsers.Rows.Count.ToString();
+                            MessageBox.Show("Se elimino correctamente");
+                        }
+                        else { MessageBox.Show(msError.ErrorMessage); }
+                    }//fin Pregunta
+                   
+                }
+            }
+            else { MessageBox.Show("Selecione el usuario A Modificar"); }
         }
     }
 }

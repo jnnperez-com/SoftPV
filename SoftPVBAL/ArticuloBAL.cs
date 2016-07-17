@@ -56,9 +56,31 @@ namespace SoftPV.BAL
             ArticuloAPI articulo = new ArticuloAPI();
             return articulo.CkeckMeArticulo();
         }
+        public static ArticuloEntity GetCodeArticulo(string Codigo)
+        {
+            ArticuloAPI _art = new ArticuloAPI();
+            return _art.GetCodeArticulo(Codigo);
+        }
+
         public bool AddArticulo()
         {
             return AddArticulo(this.codigo, this.nombre, this.img, this.presentacion, this.medida, this.precioPro, this.precioPub, this.descripcion, this.existenciaMIN, this.proveedor);
+        }
+        public void GetCodeArticulo()
+        {
+            ArticuloEntity art = new ArticuloEntity();
+            art = GetCodeArticulo(this.codigo);
+            if (art.id == 0)
+            {
+                this.id = 0;
+                return;
+            }
+            this.id = art.id;
+            this.nombre = art.nombre;
+            this.codigo = art.codigo;
+            this.precioPro = art.precioPro;
+            this.precioPub = art.precioPub;
+
         }
     }
 }

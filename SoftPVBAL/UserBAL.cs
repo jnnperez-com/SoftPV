@@ -106,6 +106,11 @@ namespace SoftPV.BAL
             UserAPI _UserAPI = new UserAPI();
             return _UserAPI.GetOneUser(Id);
         }
+        public static bool DeleteOneUser(int Id)
+        {
+            UserAPI _UserAPI = new UserAPI();
+            return _UserAPI.DeleteOneUser(Id);
+        }
         public static bool ChangePassword(int Id, string Pass1, string Pass2)
         {
             UserAPI user = new UserAPI();
@@ -150,6 +155,12 @@ namespace SoftPV.BAL
             this.is_active = user.is_active;
             this.date_joined = user.date_joined;
             this.get_full_name = user.get_full_name;
+
+        }
+        public bool DeleteOneUser()
+        {
+
+            return DeleteOneUser(this.id);
 
         }
         public bool ChangePassword()
